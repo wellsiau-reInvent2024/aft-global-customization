@@ -84,7 +84,7 @@ resource "awscc_bedrock_guardrail" "general" {
   }
 }
 
-resource "awscc_bedrock_guardrail_version" "verion1" {
+resource "awscc_bedrock_guardrail_version" "version1" {
   guardrail_identifier = awscc_bedrock_guardrail.general.guardrail_id
   description          = "Initial version 1"
 }
