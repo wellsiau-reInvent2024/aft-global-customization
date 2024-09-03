@@ -1,5 +1,11 @@
+resource "random_string" "suffix" {
+  length  = 4
+  special = false
+  upper   = false
+}
+
 resource "awscc_bedrock_guardrail" "general" {
-  name                      = "general-guardrail"
+  name                      = "general-${random_string.suffix.result}"
   blocked_input_messaging   = "Unfortunately we are unable to provide response for this input"
   blocked_outputs_messaging = "Unfortunately we are unable to provide response for this input"
   description               = "Basic Bedrock Guardrail for sensitive info exfiltration"
