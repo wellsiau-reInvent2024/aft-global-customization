@@ -5,87 +5,18 @@ resource "aws_s3_account_public_access_block" "block_all_public" {
   restrict_public_buckets = true
 }
 
-resource "awscc_bedrock_guardrail" "general" {
-  name                      = "general-guardrail"
-  blocked_input_messaging   = "Unfortunately we are unable to provide response for this input"
-  blocked_outputs_messaging = "Unfortunately we are unable to provide response for this input"
-  description               = "Basic Bedrock Guardrail for sensitive info exfiltration"
-
-  # detect and filter harmful user inputs and FM-generated outputs
-  content_policy_config = {
-    filters_config = [
-      {
-        input_strength  = "HIGH"
-        output_strength = "HIGH"
-        type            = "SEXUAL"
-      },
-      {
-        input_strength  = "HIGH"
-        output_strength = "HIGH"
-        type            = "VIOLENCE"
-      },
-      {
-        input_strength  = "HIGH"
-        output_strength = "HIGH"
-        type            = "HATE"
-      },
-      {
-        input_strength  = "HIGH"
-        output_strength = "HIGH"
-        type            = "INSULTS"
-      },
-      {
-        input_strength  = "HIGH"
-        output_strength = "HIGH"
-        type            = "MISCONDUCT"
-      },
-      {
-        input_strength  = "NONE"
-        output_strength = "NONE"
-        type            = "PROMPT_ATTACK"
-      }
-    ]
+module "bedrock_guardrail_us_east_1" {
+  providers = {
+    aws   = aws
+    awscc = awscc
   }
-
-  # block / mask potential PII information
-  sensitive_information_policy_config = {
-    pii_entities_config = [
-      {
-        action = "BLOCK"
-        type   = "DRIVER_ID"
-      },
-      {
-        action = "BLOCK"
-        type   = "PASSWORD"
-      },
-      {
-        action = "ANONYMIZE"
-        type   = "EMAIL"
-      },
-      {
-        action = "ANONYMIZE"
-        type   = "USERNAME"
-      },
-      {
-        action = "BLOCK"
-        type   = "AWS_ACCESS_KEY"
-      },
-      {
-        action = "BLOCK"
-        type   = "AWS_SECRET_KEY"
-      },
-    ]
-  }
-
-  # block select word / profanity
-  word_policy_config = {
-    managed_word_lists_config = [{
-      type = "PROFANITY"
-    }]
-  }
+  source = "./modules/bedrock"
 }
 
-resource "awscc_bedrock_guardrail_version" "verion1" {
-  guardrail_identifier = awscc_bedrock_guardrail.general.guardrail_id
-  description          = "Initial version 1"
+module "bedrock_guardrail_us_west_2" {
+  providers = {
+    aws   = aws.us_west_2
+    awscc = awscc.us_west_2
+  }
+  source = "./modules/bedrock"
 }

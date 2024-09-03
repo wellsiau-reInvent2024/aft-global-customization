@@ -19,3 +19,25 @@ provider "awscc" {
     role_arn    = "{{ target_admin_role_arn }}"
   }
 }
+
+provider "aws" {
+  region = "{{ us-west-2 }}"
+  assume_role {
+    role_arn    = "{{ target_admin_role_arn }}"
+  }
+  default_tags {
+    tags = {
+      managed_by                  = "AFT"
+    }
+  }
+  alias = "us_west_2"
+}
+
+provider "awscc" {
+  region = "{{ us-west-2 }}"
+  assume_role = {
+    role_arn    = "{{ target_admin_role_arn }}"
+  }
+  alias = "us_west_2"
+}
+
