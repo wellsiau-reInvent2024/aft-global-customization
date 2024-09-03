@@ -1,0 +1,11 @@
+summary-position: bottom
+compact: True
+quiet: True
+directory:
+- IDENTITY-CENTER/terraform
+- GENAI-WORKLOAD/terraform
+skip-check:
+- CKV_TF_1 # allow use version to refer aws-ia repo
+- CKV_TF_2 # allow use version to refer aws-ia repo
+- CKV_AWS_337 # skip KMS for SSM param
+- CKV2_AWS_34 # skip KMS for SSM param
