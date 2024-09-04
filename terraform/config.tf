@@ -11,12 +11,12 @@ resource "awscc_config_config_rule" "s3_versioning" {
   }
 }
 
-resource "awscc_config_conformance_pack" "sagemaker" {
+resource "awscc_config_conformance_pack" "sagemaker_us_east_1" {
   conformance_pack_name = "Security-Best-Practices-for-SageMaker"
   template_body         = file("./aws-config-conformance-packs/Security-Best-Practices-for-SageMaker.yaml")
 }
 
-resource "awscc_config_conformance_pack" "sagemaker" {
+resource "awscc_config_conformance_pack" "sagemaker_us_west_2" {
   conformance_pack_name = "Security-Best-Practices-for-SageMaker"
   template_body         = file("./aws-config-conformance-packs/Security-Best-Practices-for-SageMaker.yaml")
   provider              = aws.us_west_2
