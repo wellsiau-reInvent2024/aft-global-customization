@@ -1,3 +1,4 @@
 pip==22.1.2
 jinja2-cli==0.7.0
 Jinja2==3.0.1
+pyyaml==24.7.0
