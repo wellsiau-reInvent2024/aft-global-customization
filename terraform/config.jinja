@@ -2,11 +2,11 @@
 # jinja2 --format=yaml config.jinja deployment_manifest.yaml
 
 {%- for item, attr in deployments.items() %}
-module "config_conformance_pack_{{ item }}" {
-  providers = {
-    aws = aws.{{ attr.provider_region }}
-  }
-  source                = "./modules/config"
-  conformance_pack_name = "Operational-Best-Practices-for-AI-and-ML"
-}
+#module "config_conformance_pack_{{ item }}" {
+#  providers = {
+#    aws = aws.{{ attr.provider_region }}
+#  }
+#  source                = "./modules/config"
+#  conformance_pack_name = "Operational-Best-Practices-for-AI-and-ML"
+#}
 {% endfor %}
