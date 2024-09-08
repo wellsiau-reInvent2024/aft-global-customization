@@ -1,3 +1,6 @@
+# Copyright Amazon.com, Inc. or its affiliates. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+
 resource "random_string" "suffix" {
   length  = 4
   special = false

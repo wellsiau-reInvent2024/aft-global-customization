@@ -1,6 +1,24 @@
-resource "aws_s3_account_public_access_block" "block_all_public" {
-  block_public_acls       = true
-  block_public_policy     = true
-  ignore_public_acls      = true
-  restrict_public_buckets = true
+# Copyright Amazon.com, Inc. or its affiliates. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+
+data "aws_caller_identity" "current" {}
+
+data "aws_region" "current" {}
+
+module "aft_custom_fields" {
+  source = "./modules/custom_fields"
+}
+
+locals {
+  tags     = jsondecode(lookup(module.aft_custom_fields.values, "tags", "{}"))
+  features = jsondecode(lookup(module.aft_custom_fields.values, "features", "{}"))
+}
+
+module "default_account_config" {
+  source = "./modules/default_account_config"
+
+  enable_s3_bpa          = lookup(local.features, "s3_bpa", true)
+  enable_ami_bpa         = lookup(local.features, "ami_bpa", true)
+  enforce_ebs_encryption = lookup(local.features, "ebs_encryption", true)
+  enforce_imdsv2         = lookup(local.features, "imdsv2", true)
 }
