@@ -20,6 +20,31 @@ provider "awscc" {
   }
 }
 
+##### Alias Us-East-1 #####
+
+provider "aws" {
+  region = "us-east-1"
+  assume_role {
+    role_arn    = "{{ target_admin_role_arn }}"
+  }
+  default_tags {
+    tags = {
+      managed_by                  = "AFT"
+    }
+  }
+  alias = "us_east_1"
+}
+
+provider "awscc" {
+  region = "us-east-1"
+  assume_role = {
+    role_arn    = "{{ target_admin_role_arn }}"
+  }
+  alias = "us_east_1"
+}
+
+##### Alias Us-West-2 #####
+
 provider "aws" {
   region = "us-west-2"
   assume_role {
@@ -41,6 +66,7 @@ provider "awscc" {
   alias = "us_west_2"
 }
 
+##### Alias Us-East-2 #####
 provider "aws" {
   region = "us-east-2"
   assume_role {
