@@ -13,7 +13,7 @@ locals {
 }
 
 resource "awscc_config_conformance_pack" "this" {
-  count                 = local.file_exist ? 1 : 0
+  # count                 = local.file_exist ? 1 : 0
   conformance_pack_name = "${var.conformance_pack_name}-${random_string.suffix.result}"
   template_body         = file(local.conformance_pack_file_name)
 }
