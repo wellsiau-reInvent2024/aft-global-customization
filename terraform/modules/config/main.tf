@@ -8,7 +8,7 @@ resource "random_string" "suffix" {
 }
 
 locals {
-  conformance_pack_file_name = "./aws-config-conformance-packs/${var.conformance_pack_name}.yaml"
+  conformance_pack_file_name = "${path.module}/aws-config-conformance-packs/${var.conformance_pack_name}.yaml"
   file_exist                 = fileexists(local.conformance_pack_file_name) ? true : false
 }
 
