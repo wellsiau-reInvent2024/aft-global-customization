@@ -1,3 +1,12 @@
+# Copyright Amazon.com, Inc. or its affiliates. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+
+resource "random_string" "suffix" {
+  length  = 4
+  special = false
+  upper   = false
+}
+
 resource "awscc_config_config_rule" "s3_versioning" {
   config_rule_name = "S3_bucket_versioning_enabled"
   description      = "Rule to validate if S3 Bucket versioning is enabled"

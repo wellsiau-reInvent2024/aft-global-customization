@@ -13,6 +13,12 @@ variable "enable_ami_bpa" {
   default     = true
 }
 
+variable "enable_ebs_snapshot_bpa" {
+  type        = bool
+  description = "Block public sharing of EBS snapshot at account level"
+  default     = true
+}
+
 variable "enforce_ebs_encryption" {
   type        = bool
   description = "Enforce EBS encryption at account level"

@@ -30,3 +30,8 @@ resource "aws_ec2_instance_metadata_defaults" "enforce_imdsv2" {
   http_tokens                 = "required"
   http_put_response_hop_limit = 1
 }
+
+resource "awscc_ec2_snapshot_block_public_access" "account" {
+  count = var.enable_ebs_snapshot_bpa ? 1 : 0
+  state = "block-all-sharing"
+}
