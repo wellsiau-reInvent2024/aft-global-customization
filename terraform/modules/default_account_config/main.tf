@@ -9,7 +9,6 @@ resource "aws_s3_account_public_access_block" "account" {
   restrict_public_buckets = true
 }
 
-
 resource "aws_ec2_image_block_public_access" "account" {
   count = var.enable_ami_bpa ? 1 : 0
   state = "block-new-sharing"
