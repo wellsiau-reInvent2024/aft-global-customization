@@ -1,10 +1,6 @@
 # Copyright Amazon.com, Inc. or its affiliates. All rights reserved.
 # SPDX-License-Identifier: Apache-2.0
 
-data "aws_caller_identity" "current" {}
-
-data "aws_region" "current" {}
-
 # Look up all custom fields available at the account level SSM parameter
 module "aft_custom_fields" {
   source = "./modules/custom_fields"

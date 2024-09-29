@@ -1,4 +1,4 @@
-deployments:
+# deployments:
   # prod:
   #   provider_region: us_east_1
   # failover:

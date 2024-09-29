@@ -1,6 +1,7 @@
 # To use this template
 # jinja2 --format=yaml config.jinja deployment_manifest.yaml
 
+{% if deployments|length > 0 %}
 {%- for item, attr in deployments.items() %}
 module "config_conformance_pack_{{ item }}" {
   providers = {
@@ -11,3 +12,4 @@ module "config_conformance_pack_{{ item }}" {
   conformance_pack_name = "Operational-Best-Practices-for-AI-and-ML"
 }
 {% endfor %}
+{% endif %}
