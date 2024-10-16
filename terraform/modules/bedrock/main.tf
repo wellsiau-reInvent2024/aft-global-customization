@@ -84,6 +84,9 @@ resource "awscc_bedrock_guardrail" "general" {
     managed_word_lists_config = [{
       type = "PROFANITY"
     }]
+    words_config = [{
+      text = "HATE"
+    }]
   }
 }
 
