@@ -77,6 +77,7 @@ resource "awscc_bedrock_guardrail" "general" {
         type   = "AWS_SECRET_KEY"
       },
     ]
+    regexes_config = []
   }
 
   # block select word / profanity
