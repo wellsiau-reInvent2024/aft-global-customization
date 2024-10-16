@@ -77,7 +77,12 @@ resource "awscc_bedrock_guardrail" "general" {
         type   = "AWS_SECRET_KEY"
       },
     ]
-    regexes_config = []
+    regexes_config = [{
+      action      = "BLOCK"
+      description = "SSN regex"
+      name        = "SSN"
+      pattern     = "^\\d{3}-\\d{2}-\\d{4}$"
+    }]
   }
 
   # block select word / profanity
