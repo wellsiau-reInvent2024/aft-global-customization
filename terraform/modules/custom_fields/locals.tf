@@ -5,6 +5,6 @@
 locals {
   aft_custom_fields = {
     for i, v in data.aws_ssm_parameters_by_path.aft_custom_fields.names :
-      split("/", v)[4] => nonsensitive(data.aws_ssm_parameters_by_path.aft_custom_fields.values)[i]
+    split("/", v)[4] => nonsensitive(data.aws_ssm_parameters_by_path.aft_custom_fields.values)[i]
   }
 }
