@@ -2,15 +2,15 @@
 # SPDX-License-Identifier: Apache-2.0
 
 # Look up all custom fields available at the account level SSM parameter
-module "aft_custom_fields" {
-  source = "./modules/custom_fields"
-}
+# module "aft_custom_fields" {
+#   source = "./modules/custom_fields"
+# }
 
 # map tags and features from SSM parameter
-locals {
-  tags     = jsondecode(lookup(module.aft_custom_fields.values, "tags", "{}"))
-  features = jsondecode(lookup(module.aft_custom_fields.values, "features", "{}"))
-}
+# locals {
+#   tags     = jsondecode(lookup(module.aft_custom_fields.values, "tags", "{}"))
+#   features = jsondecode(lookup(module.aft_custom_fields.values, "features", "{}"))
+# }
 
 # apply account level config per each feature
 # module "default_account_config" {
