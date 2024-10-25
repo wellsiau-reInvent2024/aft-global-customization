@@ -25,3 +25,10 @@ repos:
       - id: check-json
       - id: check-yaml
       - id: detect-private-key
+  - repo: local
+    hooks:
+      - id: jinja-script-sh
+        name: jinja-script-sh
+        entry: jinja.sh
+        language: script
+        pass_filenames: false
