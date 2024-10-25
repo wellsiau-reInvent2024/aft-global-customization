@@ -31,4 +31,3 @@ repos:
         name: jinja-script-sh
         entry: jinja.sh
         language: script
-        pass_filenames: false
