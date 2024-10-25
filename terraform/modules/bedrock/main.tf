@@ -15,9 +15,14 @@ resource "aws_bedrock_guardrail" "general" {
 
   content_policy_config {
     filters_config {
-      input_strength  = "NONE"
-      output_strength = "NONE"
+      input_strength  = "MEDIUM"
+      output_strength = "MEDIUM"
       type            = "PROMPT_ATTACK"
+    }
+    filters_config {
+      input_strength  = "MEDIUM"
+      output_strength = "MEDIUM"
+      type            = "HATE"
     }
   }
 }
