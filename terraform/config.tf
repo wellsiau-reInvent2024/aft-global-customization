@@ -11,12 +11,3 @@ module "config_conformance_pack_prod" {
   conformance_pack_name = "Operational-Best-Practices-for-AI-and-ML"
 }
 
-module "config_conformance_pack_failover" {
-  providers = {
-    aws   = aws.us_west_2
-    awscc = awscc.us_west_2
-  }
-  source                = "./modules/config"
-  conformance_pack_name = "Operational-Best-Practices-for-AI-and-ML"
-}
-
