@@ -1,7 +1,7 @@
 deployments:
   prod:
     provider_region: us_east_1
-  # failover:
-  #   provider_region: us_west_2
-  # staging:
-  #   provider_region: us_east_2
+  failover:
+    provider_region: us_west_2
+  staging:
+    provider_region: us_east_2
